@@ -1,4 +1,5 @@
 #include "ProcessList.h"
+#include <vector>
 #include "core/Process.h"
 
 
@@ -8,10 +9,16 @@ namespace sysmon {
         AppendColumn("Name");
     }
 
-    void ProcessList::AddProcess(int64_t pid, const std::string &name) {
+    void ProcessList::AddProcesses(const std::vector<Process> &processes) {
+        for (const auto &process: processes) {
+            AddProcess(process);
+        }
+    }
+
+    void ProcessList::AddProcess(const Process &process) {
         int index = m_processes.size();
-        InsertItem(index, wxString::FromDouble(pid));
-        SetItem(index, 1, wxString::FromUTF8(name));
-        m_processes.emplace_back(Process(pid, name));
+        InsertItem(index, wxString::FromDouble(process.pid));
+        SetItem(index, 1, process.name);
+        m_processes.emplace_back(process);
     }
 } // namespace sysmon

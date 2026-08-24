@@ -9,7 +9,8 @@ namespace sysmon {
     public:
         ProcessList(wxWindow *parent);
 
-        void AddProcess(int64_t pid, const std::string &name);
+        void AddProcess(const Process& process);
+        void AddProcesses(const std::vector<Process>& processes);
 
     private:
         std::vector<Process> m_processes;

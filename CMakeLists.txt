@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(wxWidgets REQUIRED COMPONENTS gl core base)
 include(${wxWidgets_USE_FILE})
 
-set(SOURCES main.cpp view/App.cpp view/MainFrame.cpp view/ProcessList.cpp)
+set(SOURCES main.cpp view/App.cpp view/MainFrame.cpp view/ProcessList.cpp core/Stats.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

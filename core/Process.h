@@ -2,13 +2,22 @@
 
 
 #include <cstdint>
-#include <string>
+#include <vector>
+#include <wx/event.h>
+#include <wx/string.h>
+#include <wx/thread.h>
+
+
+wxDEFINE_EVENT(WX_EVENT_PROCESS_UPDATED, wxThreadEvent);
 
 namespace sysmon {
     struct Process {
-        int64_t pid;
-        std::string name;
+        uint32_t pid;
+        wxString name;
 
-        Process(int64_t pid, std::string name) : pid(pid), name(name) {}
+        Process() = default;
+        Process(uint32_t pid, wxString name) : pid(pid), name(name) {}
     };
+
+    std::vector<Process> GetProcesses();
 }; // namespace sysmon

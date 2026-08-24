@@ -16,7 +16,8 @@ namespace sysmon {
         wxPanel *processPanel = new wxPanel(this, wxID_ANY);
         ProcessList *plist = new ProcessList(processPanel);
 
-        plist->AddProcess(120, "sysmon");
+        std::vector<Process> processes = GetProcesses();
+        plist->AddProcesses(processes);
 
         wxSizer *sizer = new wxBoxSizer(wxVERTICAL);
         sizer->Add(plist, 1, wxEXPAND | wxALL, 0);
