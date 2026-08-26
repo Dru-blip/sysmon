@@ -1,3 +1,12 @@
-#include "view/App.h"
+#include <QApplication>
+#include <QPushButton>
 
-wxIMPLEMENT_APP(sysmon::App);
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+
+    QPushButton button("Hello, World!");
+    button.show();
+
+    return app.exec();
+}
